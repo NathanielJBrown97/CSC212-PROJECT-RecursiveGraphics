@@ -1,6 +1,6 @@
 # CSC212-Project-2
 Shared repository for group project in URI CSC 212 - Data Structures and Algorithms
-Group members consist of: Nathaniel Brown, Rebecca Iselin, Insert Name, Insert Name. 
+Group members consist of: Nathaniel Brown, Rebecca Iselin, Alexandria Sampalis, Aeyva Rebelo.
 
 Project *must* consist of three major aspects. Source Code, Class Presentation, Project Report.
 
