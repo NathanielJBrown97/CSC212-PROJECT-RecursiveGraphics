@@ -1,22 +1,25 @@
 {
     "configurations": [
-      {
-        "name": "Win32",
-        "includePath": [
-          "${workspaceFolder}/**",
-          "${workspaceFolder}/Version1.0/libs/include"
-        ],
-        "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
-        "windowsSdkVersion": "10.0.19041.0",
-        "compilerPath": "cl.exe",
-        "cStandard": "c11",
-        "cppStandard": "c++11",
-        "intelliSenseMode": "windows-msvc-x64",
-        "compilerArgs": [
-          "/LIBPATH:${workspaceFolder}/Version1.0/libs/lib"
-        ]
-      }
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/Version1.0/"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.19041.0",
+            "compilerPath": "cl.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "windows-msvc-x64",
+            "compilerArgs": [
+                "/LIBPATH:${workspaceFolder}/Version1.0/lib"
+            ]
+        }
     ],
     "version": 4
-  }
-  
+}
