@@ -10,10 +10,12 @@ Source Code Breakdown:
 - *Code Compilation* I.E. INSTRUCTIONS. Direct instructions wtihin our final readme document, within repository. (Again; just handle this at the end imo)
 
 Presentation Breakdown:
-- 15 Minute Presentation. Exact time; so we will utilize timers to cut members off if they're dragging on for too long. In order to get through the presentation as a whole.
-- 8 Mins for Topic intro and algorithm explanation. (Two Members)
-- Review of the Source Code; compilation and demonstration of our outputs. (One Member)
-- ~3 Minutes for Answering Questions (One Member) <--- What are your thoughts on this? What if no questions are asked? Group member would be stiffed.
+- 15 Minute Presentation; **15 Total... Aim for 12 minutes, remaining time for questions**. Exact time; so we will utilize timers to cut members off if they're dragging on for too long. In order to get through the presentation as a whole.
+- **6** Mins for Topic intro and algorithm explanation. (Two Members)
+- **6** Review of the Source Code; compilation and demonstration of our outputs. (Two Members)
+- ~3 Minutes for Answering Questions (Group Effort) **No points will be doc'd if questions are not asked; professor will usually ask questions to test students on their knowledge of the topic.**
+
+- **_Revisit this in the future; to find best 'flow' of presentation <-- Needs to be 'engaging' not interactive._**
 
 Report Breakdown:
 - Title Page; group members, project topic with concentration, date stamps.
@@ -21,6 +23,7 @@ Report Breakdown:
 - Body: - Introduction to Topic (context, purpose; just surface level detail). Intro to Project (what/why we chose it, how it matches with topic???). Breakdown of the algorithm in depth. Implementation breakdown (describes the overall work, highlights important sections of code (especially over the top work), *PROOFS* (i.e. input scenarios... outputs, detailed descriptions of them all).
 - Contributions (Screenshots from our spreadsheet - maintained by Nathaniel. Notes by all.)
 - Conclusion: Wrap up our research and findings from programming. I.e. Go over scenarios in which this algorithm can be useful in the real world.
+- **Must also include installation guide for SFML Library**
 
 
 MANDATORY REQUIREMENTS OF OUR CODE:
@@ -28,4 +31,7 @@ MANDATORY REQUIREMENTS OF OUR CODE:
 - Each must print an image or pdf (lets be consistent and decide which).
 - From here we need to determine an extra task; bare minimum is not the goal. 3 Recursive outputs shouldn't be too hard among 4 people over 4 weeks.
 
-  *I'd (Nathaniel) like to work on the Snowflake; it sounds neat*
+**Assignments:**
+_Alexandria/Rebecca - Triangle_
+_Aeyva - Curve_
+_Nathaniel - Snowflake_
