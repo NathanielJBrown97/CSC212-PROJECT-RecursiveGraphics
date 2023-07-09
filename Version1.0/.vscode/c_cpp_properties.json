@@ -1,0 +1,27 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/libs/include/**",
+                "${workspaceFolder}/libs/lib",
+                "C:/Users/Colin/Documents/SCHOOL STUFF/CSC-212/212project-csc212/SFML-2.6.0/include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "windowsSdkVersion": "10.0.19041.0",
+            "compilerPath": "cl.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "windows-msvc-x64",
+            "compilerArgs": [
+                "/LIBPATH:${workspaceFolder}/libs/lib"
+            ]
+        }
+    ],
+    "version": 4
+}

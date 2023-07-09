@@ -1,0 +1,4 @@
+{
+    "files.autoSave": "onWindowChange",
+    "code-runner.fileDirectoryAsCwd": false
+}
