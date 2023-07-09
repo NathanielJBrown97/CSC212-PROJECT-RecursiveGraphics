@@ -3,6 +3,7 @@
 
 /////////////////// Libraries ////////////////////
 #include <iostream>
+#include <SFML/Graphics.hpp> // SFML Library - Graphics pools resources and calls upon windows resources.
 //////////////////////////////////////////////////
 
 
