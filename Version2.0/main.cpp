@@ -38,8 +38,12 @@ void displaySubMenu(int mainMenuChoice){
         //// KOCH'S SNOWFLAKE
     else if (mainMenuChoice == 3){
         std::cout << "Welcome to the Koch's Snowflake Algorithm \n" <<
-                  "Please enter a [Some Parameter] and a [Some Parameter] \n\n";
-
+                  "Please follow the prompts and enter a file name for your image creation. *Must* end with .png. \n"
+                  "Then select a color from the following menu (Input the corresponding number): \n"
+                  "1.) Red \n"
+                  "2.) Magenta \n"
+                  "3.) White \n"
+                  "4.) Yellow \n\n";
     }
         //// 4TH ALGORITHM THING
     else if (mainMenuChoice == 4){
@@ -86,16 +90,34 @@ int main(){
         }
         //// KOCH'S SNOWFLAKE
         else if (mainMenuChoice == 3){
-            std::string filename; // initialize necessary params for future function/class call from Koch files.
+            std::string fileName; // initialize necessary params for future function/class call from Koch files.
             int windowHeight = 1000; // sets height of window for Koch
             int windowWidth = 1000; // sets width of window for koch
+            sf::Color userColor; // Creates a object of type template-color class in the SF library.
+            int userSelection; // Int representing color selection -> used to set userColor object.
             displaySubMenu(mainMenuChoice);
-            std::cout << "Please enter the file name you wish to save the Koch's Snowflake to:  "; std::cin >> filename;
+            std::cout << "Please enter the file name you wish to save the Koch's Snowflake to:  "; std::cin >> fileName;
+            std::cout << "Please enter your color selection. (Type the corresponding number: "; std::cin >> userSelection;
 
+            //Basic userSelection menu to set color of graph... with catch all for invalid input.
+            if (userSelection == 1){
+                userColor = sf::Color::Red;
+            }
+            else if (userSelection == 2){
+                userColor = sf::Color::Magenta;
+            }
+            else if (userSelection == 3){
+                userColor = sf::Color::White;
+            }
+            else if (userSelection == 4){
+                userColor = sf::Color::Yellow;
+            }
+            else{
+                std::cout << "Detecting an inability to count from 1 - 4... auto selecting the worst color... \n";
+                userColor = sf::Color:: Blue;
+            }
 
-            initiateKOCH(windowHeight, windowWidth);
-            /// TODO: IMPLEMENT SAVE AS IMAGE FUNCTION - REORGANIZE PARAMETERS FOR AESTHETICS?
-            /// TODO: IMPLEMENT SUB-MENU / SERIES OF REQUESTS FOR USER INPUT - DETERMINES AESTHETICS OF SNOWFLAKE
+            initiateKOCH(windowHeight, windowWidth, fileName, userColor); /// Initiates the Koch's Snowflake passed a height, width dimensions for the graphic window. As well as a file name for the png output, and a user selected color of the graphic.
 
         }
         //// 4TH ALGORITHM THING
