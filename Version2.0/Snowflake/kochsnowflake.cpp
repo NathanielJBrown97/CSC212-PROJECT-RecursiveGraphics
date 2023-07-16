@@ -32,7 +32,7 @@
 /// NON-CLASS function; used within main passed setter parameters to determine creation.
 // Initiates our RenderWindow creates our snowflake object, and sets the setters to respective parameters.
 // Parameters X: Height and Width to determine size of our window (1000,1000 always - for consistency).
-void initiateKOCH(int HEIGHT, int WIDTH) {
+void initiateKOCH(int HEIGHT, int WIDTH, std::string fileName) {
 
     //creates our object window using the template class RenderWindow. This accepts two parameters. A mode and a title.
     // The mode is an object of type VideoMode (template class of SFML library) which requires two parameters a Width and a Height. Used to scale the window's box.
@@ -45,6 +45,12 @@ void initiateKOCH(int HEIGHT, int WIDTH) {
     graphic.setColor(sf::Color::Magenta); // Snowflake Class setter - sets the color.
     graphic.setStageOutput(stage); // Snowflake Class setter - sets the number of iterations the recursive graphic generation will undergo (i.e. sets the stage of the final output drawing); passed int variable representing number of iterations.
 
+
+    /// CREATION OF TEXTURE / IMAGE OBJECTS *** MUST *** OCCUR BEFORE OPENING WINDOW.
+    ///Create a TEXTURE template-class object; for use in storing the graphic. Will be copied into the image object.
+    sf::Texture requiredSolution;
+    ///Create a IMAGE template-class object; for use in saving the texture as a PNG.
+    sf::Image requiredAggravation;
 
     //While the window is open (isOpen() is a member function of sf library classes.
     while (graphic_window.isOpen()) {
@@ -62,9 +68,18 @@ void initiateKOCH(int HEIGHT, int WIDTH) {
 
         graphic.construct_snowflake(graphic_window); // Snowflake Class Method - calls the method used to start actually drawing our snowflake; passed the window object.
         graphic_window.display(); // calls RenderWindow function to display the graphic.
+
+        /// Start Conversion and Creation of PNG image.
+        requiredSolution.create(WIDTH, HEIGHT); // Create a texture of the dimensions of the graphic window
+        requiredSolution.update(graphic_window); // Update the texture to be the current set of pixels within the graphic_window
+        requiredAggravation = requiredSolution.copyToImage(); // Set the Image object; to be a copy of the texture, using the built in function.
+        requiredAggravation.saveToFile(fileName); //Save the updated image to a file; using the filename parameter.
+        /// End Creation of Image.
+
         graphic_window.clear(); // after closing the application; call the clear function to reset the window for any future graphic generations.
 
     }
+
 }
 
 /// void Method function used to construct the snowflake through the use of calling the draw helper functions
