@@ -1,40 +1,66 @@
-
 #include "hCurve.h"
 
-// dont need a whole class, but could use a struct to
-// make a pair of the x and y coordinates
-struct point{
-    int x;
-    int y;
-};
+Point::Point(int x, int y) {
+    this->x = x;
+    this->y = y;
+}
+
+hCurve::hCurve(int order, int size, int x, int y) {
+    this->order = order;
+    this->size = size;
+    this->startX = x;
+    this->startY = y;
+
+}
+
+
+
+
+// Will be used to generate the curve recursively by calling itself from a starting point, and then
+Point hCurve::generateCurve(int order, int size, int x, int y) {
+    // Generate initial/recursive point(s) to iterated over.
+    // Base Case: Order is zero, return the current position as a single point.
+    if (order == 0) {
+
+    }
+        // recursive algorithm, for orders greater than zero
+        // four possible directions of traversal are 4 cardinal directions NESW
+        // call the first direction, then recursively call the 4 other directions within it
+        // calls update the position with an offset, offsets determined by the size of the current square and the direction
+        // repeat with the next 3 directions till the order is 0
+    else {
+        // Northern direction call.
+        // rough approximation of the function?
+        // newPoint = generateCurve(order - 1, size, x + size, y);
+
+    }
+}
 
 int hCurve::getOrder() {
-    return 0;
+    return order;
 }
 
 int hCurve::getSize() {
-    return 0;
+    return size;
 }
 
 int hCurve::setOrder(int order) {
     return 0;
 }
 
+
 int hCurve::setSize(int size) {
     return 0;
 }
 
- hCurve::generateCurve(int order, int size, int x, int y, std::vector<struct points> pointsVec) {
- // base case: order is zero, return the current position as a single point
- // recursive algorithm, for orders greater than zero
-    // four possible directions of traversal are 4 cardinal directions NESW
-    // call the first direction, then recursively call the 4 other directions within it
-        // calls update the position with an offset, offsets determined by the size of the current square and the direction
+hCurve::~hCurve() {
+    // TODO: Deconstructor implementation
 
-
-    return struct<points> point;
 }
 
-int hCurve::getOrder() {
-    return 0;
-}
+    // TODO: Implement the SFML functions
+        // - Convert the vector to an SFML vector
+        // - Implement the window drawing function
+        // - Import the color manipulation function from repo (possibly turn the code into a callable function across the program
+        // - TBD
+

@@ -2,43 +2,54 @@
 #define CSC212_PROJECT_2_HCURVE_H
 
 #include <vector>
-#include <struct>
+#include <SFML/Graphics.hpp>
+
+class Point{
+private:
+    int x;
+    int y;
+
+public:
+    // Default constructor // Parameters are necessary.
+    Point(int x, int y);
+};
+
 
 class hCurve{
+    private:
+    ////////// private member variables //////////////////////////////////
 
-private:
-
-    // private member variables
-    // order of the curve generation
+    // Order of the curve generation, represents how many times we will be recursively generating/calling the algorithm from points.
     int order;
-    // "size" of the squares
-    // essentially passed into the generation function to be used to halve the size of the square in
-    // each recursive call
-    int initialSize;
-    // dont need a whole class, but could use a struct to
-    // make a pair of the x and y coordinates
-    struct point{
-        int x;
-        int y;
-    };
-    std::vector<point>& points;
-public:
+    // The initial size of the grid, used to represent the grid size by (size x size) length x height.
+    int size;
+    // Starting x-value.
+    int startX;
+    // Starting y-value.
+    int startY;
 
-    // def constructor
-    hCurve(int order, int size, int point);
-    // deconstructor
+    // Vector used to hold the points of the curve prior to generating graphics.
+    std::vector<Point> *points;
+
+    public:
+    // Default constructor // Parameters are necessary.
+    hCurve(int order, int size, int x, int y);
+    // Deconstructor.
     ~hCurve();
 
-    // getters
+    // Getter Functions.
     getOrder();
     getSize();
 
-    // setters
+    // Setter Functions.
     setOrder(int order);
     setSize(int size);
     // generates and returns the curve
-    generateCurve(int order, int size, int x, int y, std::vector<struct points> pointsVec);
+    Point generateCurve(int order, int size, int x, int y);
+
+    friend class Point;
 };
+
 
 
 
