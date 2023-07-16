@@ -32,7 +32,7 @@
 /// NON-CLASS function; used within main passed setter parameters to determine creation.
 // Initiates our RenderWindow creates our snowflake object, and sets the setters to respective parameters.
 // Parameters X: Height and Width to determine size of our window (1000,1000 always - for consistency).
-void initiateKOCH(int HEIGHT, int WIDTH, std::string fileName) {
+void initiateKOCH(int HEIGHT, int WIDTH, std::string fileName, sf::Color userColor) {
 
     //creates our object window using the template class RenderWindow. This accepts two parameters. A mode and a title.
     // The mode is an object of type VideoMode (template class of SFML library) which requires two parameters a Width and a Height. Used to scale the window's box.
@@ -42,7 +42,7 @@ void initiateKOCH(int HEIGHT, int WIDTH, std::string fileName) {
 
     kochSnowflake graphic; // creates an object of our Koch Snowflake class; calls the default constructor automatically.
     graphic.setInvisibleBox(0.0, 0.0, WIDTH, HEIGHT); // Snowflake Class setter - sets the dimensions of our invisible box in which the snowflake will be constructed; passed Width / Height from functions params.
-    graphic.setColor(sf::Color::Magenta); // Snowflake Class setter - sets the color.
+    graphic.setColor(userColor); // Snowflake Class setter - sets the color.
     graphic.setStageOutput(stage); // Snowflake Class setter - sets the number of iterations the recursive graphic generation will undergo (i.e. sets the stage of the final output drawing); passed int variable representing number of iterations.
 
 
