@@ -11,14 +11,14 @@
 void displayMainMenu(bool firstDisplay){
     if (firstDisplay == false) {
         std::cout << "\n\nWelcome to our project 212 user interface. Please read through following menu. \n" <<
-                     "Upon selection of your algorithm of choice you will be requested for input of the \n" <<
-                     "appropriate parameters required for the construction of the graphic. \n\n";
+                  "Upon selection of your algorithm of choice you will be requested for input of the \n" <<
+                  "appropriate parameters required for the construction of the graphic. \n\n";
     }
     std::cout << "1.) Hilbert's Curve \n" <<
-                 "2.) Sierpinski's Triangle \n" <<
-                 "3.) Koch's Snowflake \n" <<
-                 "4.) TBD's Thing \n" <<
-                 "5.) End Program \n\n";
+              "2.) Sierpinski's Triangle \n" <<
+              "3.) Koch's Snowflake \n" <<
+              "4.) TBD's Thing \n" <<
+              "5.) End Program \n\n";
 }
 
 
@@ -27,12 +27,12 @@ void displaySubMenu(int mainMenuChoice){
     //// HILBERT'S CURVE - The messages and parameters are templates. Adjust to what is needed in future additions.
     if (mainMenuChoice == 1){
         std::cout << "Welcome to the Hilbert's Curve Algorithm \n" <<
-                     "Please enter a [Some Parameter] and a [Some Parameter] \n\n";
+                  "Please enter a [Some Parameter] and a [Some Parameter] \n\n";
     }
-    //// SIERPINSKI'S TRIANGLE
+        //// SIERPINSKI'S TRIANGLE
     else if (mainMenuChoice == 2){
         std::cout << "Welcome to the Sierpinski's Triangle Algorithm \n" <<
-                   "Please enter a [Some Parameter], [Some Parameter], and [Some Other Parameter] \n\n";
+                  "Please enter a [Some Parameter], [Some Parameter], and [Some Other Parameter] \n\n";
 
     }
         //// KOCH'S SNOWFLAKE
@@ -48,7 +48,7 @@ void displaySubMenu(int mainMenuChoice){
         //// 4TH ALGORITHM THING
     else if (mainMenuChoice == 4){
         std::cout << "Welcome to this thing we haven't decided yet \n" <<
-                     "Please enter [Whatever Parameter is needed] \n\n";
+                  "Please enter [Whatever Parameter is needed] \n\n";
     }
 }
 
@@ -77,7 +77,7 @@ int main(){
             /// TODO: INSERT APPROPRIATE OBJ CREATION OR FUNCTION CALLS TO *** HILBERT ALG *** USING PARAMS.
             // Stuff Goes Here.
         }
-        //// SIERPINSKI'S TRIANGLE
+            //// SIERPINSKI'S TRIANGLE
         else if (mainMenuChoice == 2){
             int param1, param2, param3; // initialize necessary params for future function/class call from Sierpinski files.
             displaySubMenu(mainMenuChoice);
@@ -88,9 +88,10 @@ int main(){
             /// TODO: INSERT APPROPRIATE OBJ CREATION OR FUNCTION CALLS TO *** SIERPINSKI ALG *** USING PARAMS.
             // Stuff Goes Here.
         }
-        //// KOCH'S SNOWFLAKE
+            //// KOCH'S SNOWFLAKE
         else if (mainMenuChoice == 3){
             std::string fileName; // initialize necessary params for future function/class call from Koch files.
+            std::string fileNameDirectory = "../"; // moves file up one directory
             int windowHeight = 1000; // sets height of window for Koch
             int windowWidth = 1000; // sets width of window for koch
             sf::Color userColor; // Creates a object of type template-color class in the SF library.
@@ -117,10 +118,12 @@ int main(){
                 userColor = sf::Color:: Blue;
             }
 
-            initiateKOCH(windowHeight, windowWidth, fileName, userColor); /// Initiates the Koch's Snowflake passed a height, width dimensions for the graphic window. As well as a file name for the png output, and a user selected color of the graphic.
+            fileNameDirectory += fileName;
+
+            initiateKOCH(windowHeight, windowWidth, fileNameDirectory, userColor); /// Initiates the Koch's Snowflake passed a height, width dimensions for the graphic window. As well as a file name for the png output, and a user selected color of the graphic.
 
         }
-        //// 4TH ALGORITHM THING
+            //// 4TH ALGORITHM THING
         else if (mainMenuChoice == 4){
             int param1; // intialize necessary params for future function/class calls within the undecided algorithm files.
             displaySubMenu(mainMenuChoice);
@@ -129,7 +132,7 @@ int main(){
             /// TODO: INSERT APPROPRIATE OBJ CREATION OR FUNCTION CALLS TO *** MYSTERY ALG *** USING PARAMS.
             // Stuff Goes Here.
         }
-        //// TERMINATE PROGRAM - END OUTER WHILE
+            //// TERMINATE PROGRAM - END OUTER WHILE
         else if (mainMenuChoice == 5){
             std::cout << "Program is ending... Thank you!\n\n";
             break;
