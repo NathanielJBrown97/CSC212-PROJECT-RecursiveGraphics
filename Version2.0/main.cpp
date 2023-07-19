@@ -17,8 +17,7 @@ void displayMainMenu(bool firstDisplay){
     std::cout << "1.) Hilbert's Curve \n" <<
               "2.) Sierpinski's Triangle \n" <<
               "3.) Koch's Snowflake \n" <<
-              "4.) TBD's Thing \n" <<
-              "5.) End Program \n\n";
+              "4.) End Program \n\n";
 }
 
 
@@ -45,11 +44,6 @@ void displaySubMenu(int mainMenuChoice){
                   "3.) White \n"
                   "4.) Yellow \n\n";
     }
-        //// 4TH ALGORITHM THING
-    else if (mainMenuChoice == 4){
-        std::cout << "Welcome to this thing we haven't decided yet \n" <<
-                  "Please enter [Whatever Parameter is needed] \n\n";
-    }
 }
 
 //// Main function; Initiates program and starts the user interface, includes boolean catch to avoid reprinting intro message repeatedly.
@@ -62,7 +56,7 @@ int main(){
     int mainMenuChoice = 666; //int variable to store outer loop choice. Set to a number outside of range.
 
     //// Loop through until the user selects 5 to end the program.
-    while(mainMenuChoice != 5) {
+    while(mainMenuChoice != 4) {
         int subMenuChoice = 666; //int variable to store the inner loops choices. Resets to number outside of range after each iteration of outer loop.
 
         std::cout << "Please input the number of your choice: "; std::cin >> mainMenuChoice; std::cout << "\n"; //Request Menu Choice
@@ -98,7 +92,7 @@ int main(){
             int userSelection; // Int representing color selection -> used to set userColor object.
             displaySubMenu(mainMenuChoice);
             std::cout << "Please enter the file name you wish to save the Koch's Snowflake to:  "; std::cin >> fileName;
-            std::cout << "Please enter your color selection. (Type the corresponding number: "; std::cin >> userSelection;
+            std::cout << "Please enter your color selection. (Type the corresponding number): "; std::cin >> userSelection;
 
             //Basic userSelection menu to set color of graph... with catch all for invalid input.
             if (userSelection == 1){
@@ -123,17 +117,8 @@ int main(){
             initiateKOCH(windowHeight, windowWidth, fileNameDirectory, userColor); /// Initiates the Koch's Snowflake passed a height, width dimensions for the graphic window. As well as a file name for the png output, and a user selected color of the graphic.
 
         }
-            //// 4TH ALGORITHM THING
-        else if (mainMenuChoice == 4){
-            int param1; // intialize necessary params for future function/class calls within the undecided algorithm files.
-            displaySubMenu(mainMenuChoice);
-            std::cout << "Enter [Some Parameter 1]: "; std::cin >> param1;
-
-            /// TODO: INSERT APPROPRIATE OBJ CREATION OR FUNCTION CALLS TO *** MYSTERY ALG *** USING PARAMS.
-            // Stuff Goes Here.
-        }
             //// TERMINATE PROGRAM - END OUTER WHILE
-        else if (mainMenuChoice == 5){
+        else if (mainMenuChoice == 4){
             std::cout << "Program is ending... Thank you!\n\n";
             break;
         }
