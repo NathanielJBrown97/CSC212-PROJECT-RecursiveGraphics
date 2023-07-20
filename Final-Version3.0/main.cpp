@@ -4,6 +4,7 @@
 ///////////////////// Libraries ////////////////////
 #include <iostream>
 #include "kochsnowflake.cpp"
+#include "SierpinskiTriangle.cpp"
 ////////////////////////////////////////////////////
 
 
@@ -31,7 +32,12 @@ void displaySubMenu(int mainMenuChoice){
         //// SIERPINSKI'S TRIANGLE
     else if (mainMenuChoice == 2){
         std::cout << "Welcome to the Sierpinski's Triangle Algorithm \n" <<
-                  "Please enter a [Some Parameter], [Some Parameter], and [Some Other Parameter] \n\n";
+                     "Please follow the prompts and enter a file name for your image creation. *Must* end with .png. \n"
+                     "Then select a color from the following menu (Input the corresponding number): \n"
+                     "1.) Red \n"
+                     "2.) Magenta \n"
+                     "3.) White \n"
+                     "4.) Yellow \n\n";
 
     }
         //// KOCH'S SNOWFLAKE
@@ -44,6 +50,28 @@ void displaySubMenu(int mainMenuChoice){
                   "3.) White \n"
                   "4.) Yellow \n\n";
     }
+}
+
+sf::Color getColor(int userInput){
+    sf::Color userColor;
+
+    if (userInput == 1){
+        userColor = sf::Color::Red;
+    }
+    else if (userInput == 2){
+        userColor = sf::Color::Magenta;
+    }
+    else if (userInput == 3){
+        userColor = sf::Color::White;
+    }
+    else if (userInput == 4){
+        userColor = sf::Color::Yellow;
+    }
+    else{
+        std::cout << "Detecting an inability to count from 1 - 4... auto selecting the worst color... \n";
+        userColor = sf::Color:: Blue;
+    }
+    return userColor;
 }
 
 //// Main function; Initiates program and starts the user interface, includes boolean catch to avoid reprinting intro message repeatedly.
@@ -73,14 +101,28 @@ int main(){
         }
             //// SIERPINSKI'S TRIANGLE
         else if (mainMenuChoice == 2){
-            int param1, param2, param3; // initialize necessary params for future function/class call from Sierpinski files.
+            std::string fileName; // initialize necessary params for future function/class call from Sierpinski files.
+            std::string fileNameDirectory = "../"; // moves file up one directory
+            int windowHeight = 1000; // sets height of window for Koch
+            int windowWidth = 1000; // sets width of window for koch
+            sf::Color userColorMain; // Creates an object of type template-color class in the SF library.
+            sf::Color userColorContrast;
+            int userSelectionMainColor; // Int representing color selection -> used to set userColor object.
+            int userSelectionContrastColor;
+            int endStage; // Int that will store a number containing the amount of iterations the user decides they want the snowflake program to process. (i.e. stage of snowflake)
             displaySubMenu(mainMenuChoice);
-            std::cout << "Enter [Some Parameter 1]: "; std::cin >> param1;
-            std::cout << "Enter [Some Parameter 2]: "; std::cin >> param2;
-            std::cout << "Enter [Some Parameter 3]: "; std::cin >> param3;
 
+            std::cout << "Please enter the file name you wish to save the Koch's Snowflake to:  "; std::cin >> fileName;
+            std::cout << "Please enter your main color selection. (Type the corresponding number): "; std::cin >> userSelectionMainColor;
+            userColorMain = getColor(userSelectionMainColor);
+            std::cout << "Please enter your contrast color selection. (Type the corresponding number): "; std::cin >> userSelectionContrastColor;
+            userColorContrast = getColor(userSelectionContrastColor);
+            std::cout << "Please enter the stage of Sierpinski's Triangle you would like. (Enter a number from 0 - 5; anything higher will affect runtime.): "; std::cin >> endStage;
+
+            fileNameDirectory += fileName;
             /// TODO: INSERT APPROPRIATE OBJ CREATION OR FUNCTION CALLS TO *** SIERPINSKI ALG *** USING PARAMS.
             // Stuff Goes Here.
+            initiateSierpinski(windowHeight, windowWidth, fileNameDirectory, userColorMain, userColorContrast, endStage);
         }
             //// KOCH'S SNOWFLAKE
         else if (mainMenuChoice == 3){
@@ -96,23 +138,7 @@ int main(){
             std::cout << "Please enter your color selection. (Type the corresponding number): "; std::cin >> userSelection;
             std::cout << "Please enter the stage of Koch's Snowflake you would like. (Enter a number from 0 - 5; anything higher will affect runtime.): "; std::cin >> endStage;
 
-            //Basic userSelection menu to set color of graph... with catch all for invalid input.
-            if (userSelection == 1){
-                userColor = sf::Color::Red;
-            }
-            else if (userSelection == 2){
-                userColor = sf::Color::Magenta;
-            }
-            else if (userSelection == 3){
-                userColor = sf::Color::White;
-            }
-            else if (userSelection == 4){
-                userColor = sf::Color::Yellow;
-            }
-            else{
-                std::cout << "Detecting an inability to count from 1 - 4... auto selecting the worst color... \n";
-                userColor = sf::Color:: Blue;
-            }
+            userColor = getColor(userSelection);
 
             fileNameDirectory += fileName;
 
