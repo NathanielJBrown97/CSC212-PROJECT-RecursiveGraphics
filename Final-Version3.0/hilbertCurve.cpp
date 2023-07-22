@@ -1,5 +1,5 @@
 #include <iostream>
-#include "hCurve.h"
+#include "hilbertCurve.h"
 
 
 int count = 1;
