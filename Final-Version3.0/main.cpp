@@ -5,6 +5,7 @@
 #include <iostream>
 #include "kochsnowflake.cpp"
 #include "SierpinskiTriangle.cpp"
+#include "hilbertCurve.cpp"
 ////////////////////////////////////////////////////
 
 
@@ -32,12 +33,12 @@ void displaySubMenu(int mainMenuChoice){
         //// SIERPINSKI'S TRIANGLE
     else if (mainMenuChoice == 2){
         std::cout << "Welcome to the Sierpinski's Triangle Algorithm \n" <<
-                     "Please follow the prompts and enter a file name for your image creation. *Must* end with .png. \n"
-                     "Then select a color from the following menu (Input the corresponding number): \n"
-                     "1.) Red \n"
-                     "2.) Magenta \n"
-                     "3.) White \n"
-                     "4.) Yellow \n\n";
+                  "Please follow the prompts and enter a file name for your image creation. *Must* end with .png. \n"
+                  "Then select a color from the following menu (Input the corresponding number): \n"
+                  "1.) Red \n"
+                  "2.) Magenta \n"
+                  "3.) White \n"
+                  "4.) Yellow \n\n";
 
     }
         //// KOCH'S SNOWFLAKE
@@ -91,13 +92,12 @@ int main(){
 
         //// HILBERT'S CURVE
         if (mainMenuChoice == 1){
-            int param1, param2; // initialize necessary params for future function/class call from Hilbert files.
+            std::string fileNameDirectory = "../";
+            std::string fileName; // initialize necessary params for future function/class call from Hilbert files.
             displaySubMenu(mainMenuChoice);
-            std::cout << "Enter [Some Parameter 1]: "; std::cin >> param1;
-            std::cout << "Enter [Some Parameter 2]: "; std::cin >> param2;
-
-            /// TODO: INSERT APPROPRIATE OBJ CREATION OR FUNCTION CALLS TO *** HILBERT ALG *** USING PARAMS.
-            // Stuff Goes Here.
+            std::cout << "Please enter the file name you wish to save the Hilbert's Curve to: "; std::cin >> fileName;
+            fileNameDirectory += fileName;
+            initiateCurve(fileNameDirectory);
         }
             //// SIERPINSKI'S TRIANGLE
         else if (mainMenuChoice == 2){
@@ -120,8 +120,6 @@ int main(){
             std::cout << "Please enter the stage of Sierpinski's Triangle you would like. (Enter a number from 0 - 5; anything higher will affect runtime.): "; std::cin >> endStage;
 
             fileNameDirectory += fileName;
-            /// TODO: INSERT APPROPRIATE OBJ CREATION OR FUNCTION CALLS TO *** SIERPINSKI ALG *** USING PARAMS.
-            // Stuff Goes Here.
             initiateSierpinski(windowHeight, windowWidth, fileNameDirectory, userColorMain, userColorContrast, endStage);
         }
             //// KOCH'S SNOWFLAKE
