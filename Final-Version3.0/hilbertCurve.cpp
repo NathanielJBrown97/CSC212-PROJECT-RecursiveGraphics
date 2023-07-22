@@ -1,11 +1,14 @@
+#include <iostream>
 #include "hCurve.h"
 
+
+int count = 1;
 /////// MAIN FUNCTION TURNIED INTO INITIATE CURVE
-main() {
+int main() {
     const int windowWidth = 1000;
     const int windowHeight = 1000;
     // 7 is the max you can achieve before the graphics become too small to see
-    const int order = 1;
+    const int order = 3;
     const float sideLength = 600.0f;
     const sf::Vector2f startPosition(windowWidth / 2 - sideLength / 2, windowHeight / 2 - sideLength / 2);
 
@@ -46,6 +49,8 @@ void HilbertCurve::generateCurve(int order, sf::Vector2f start, float sideLength
     // Base case: If the current order is zero or less, add the starting point to the points vector and return.
     if (order <= 0) {
         points.push_back(start);
+        std::cout << start.x << " " << start.y << " " << count << std::endl;
+        count++;
         return;
     }
 
@@ -54,47 +59,46 @@ void HilbertCurve::generateCurve(int order, sf::Vector2f start, float sideLength
 
     // Recursively generate the four smaller sub-curves based on the current direction.
     switch (direction) {
-        case 0: // OPENS DOWN Π (opens left need to fix)
+        case 0: /// OPENS LEFT ⏌
             // Generate the sub-curve upwards.
-            generateCurve(order - 1, start, half, (direction+1)%4);
+            generateCurve(order - 1, start, half, (direction + 1)%4);
             // Generate the sub-curve to the right.
             generateCurve(order - 1, sf::Vector2f(start.x + half, start.y), half, direction);
             // Generate the sub-curve downwards.
-            generateCurve(order - 1, sf::Vector2f(start.x + half, start.y + half), half, (direction + 1) % 4);
-            // Generate the sub-curve to the left.
-            generateCurve(order - 1, sf::Vector2f(start.x, start.y + half), half, direction);
-            break;
-        case 1: // OPENS RIGHT ⎿
-            // Generate the sub-curve to the right.
-            generateCurve(order - 1, sf::Vector2f(start.x + half, start.y), half, (direction + 1) % 4);
-            // Generate the sub-curve in the downward direction.
-            generateCurve(order - 1, start, half, (direction + 2) % 4);
-            // Generate the sub-curve to the left.
-            generateCurve(order - 1, sf::Vector2f(start.x, start.y + half), half, direction);
-            // Generate the sub-curve upwards.
             generateCurve(order - 1, sf::Vector2f(start.x + half, start.y + half), half, direction);
+            // Generate the sub-curve to the left.
+            generateCurve(order - 1, sf::Vector2f(start.x , start.y + half), half, (direction + 2) % 4);
             break;
-
-        case 2: // OPENS UP ⏘
+        case 1: /// OPENS UP ⏘
             // Generate the sub-curve in the downward direction.
             generateCurve(order - 1, start, half, (direction + 3) % 4);
             // Generate the sub-curve to the right.
-            generateCurve(order - 1, sf::Vector2f(start.x, start.y + half), half, (direction + 2) % 4);
+            generateCurve(order - 1, sf::Vector2f(start.x, start.y + half), half, direction );
             // Generate the sub-curve upwards.
             generateCurve(order - 1, sf::Vector2f(start.x + half, start.y + half), half, direction);
             // Generate the sub-curve to the left.
-            generateCurve(order - 1, sf::Vector2f(start.x + half, start.y), half, direction);
+            generateCurve(order - 1, sf::Vector2f(start.x + half, start.y), half, (direction + 2) % 4);
             break;
-
-        case 3: // OPENS LEFT ⏌
-            // Generate the sub-curve to the right.
-            generateCurve(order - 1, start, half, direction);
+        case 2: /// OPENS DOWN
             // Generate the sub-curve upwards.
-            generateCurve(order - 1, sf::Vector2f(start.x + half, start.y), half, (direction + 3) % 4);
+            generateCurve(order - 1, sf::Vector2f(start.x + half, start.y + half), half, (direction + 1) % 4);
             // Generate the sub-curve to the left.
-            generateCurve(order - 1, sf::Vector2f(start.x + half, start.y + half), half, direction);
+            generateCurve(order - 1, sf::Vector2f(start.x + half, start.y), half,  direction);
             // Generate the sub-curve downwards.
+            generateCurve(order - 1, start, half, direction);
+            // Generate the sub-curve to the right.
             generateCurve(order - 1, sf::Vector2f(start.x, start.y + half), half, (direction + 2) % 4);
+            break;
+        case 3:
+            /// OPENS RIGHT ⎿
+            // Generate the sub-curve to the right.
+            generateCurve(order - 1, sf::Vector2f(start.x + half, start.y + half), half, (direction + 1) % 4);
+            // Generate the sub-curve in the downward direction.
+            generateCurve(order - 1, sf::Vector2f(start.x, start.y + half), half, direction);
+            // Generate the sub-curve to the left.
+            generateCurve(order - 1, start, half, (direction + 2) % 4);
+            // Generate the sub-curve upwards.
+            generateCurve(order - 1, sf::Vector2f(start.x + half, start.y ), half, direction);
             break;
         default:
             break;
