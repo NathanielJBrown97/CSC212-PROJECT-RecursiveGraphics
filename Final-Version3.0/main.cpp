@@ -27,8 +27,7 @@ void displayMainMenu(bool firstDisplay){
 void displaySubMenu(int mainMenuChoice){
     //// HILBERT'S CURVE - The messages and parameters are templates. Adjust to what is needed in future additions.
     if (mainMenuChoice == 1){
-        std::cout << "Welcome to the Hilbert's Curve Algorithm \n" <<
-                  "Please enter a [Some Parameter] and a [Some Parameter] \n\n";
+        std::cout << "Welcome to the Hilbert's Curve Algorithm \n\n";
     }
         //// SIERPINSKI'S TRIANGLE
     else if (mainMenuChoice == 2){
@@ -94,6 +93,7 @@ int main(){
         if (mainMenuChoice == 1){
             std::string fileNameDirectory = "../";
             std::string fileName; // initialize necessary params for future function/class call from Hilbert files.
+            displaySubMenu(mainMenuChoice);
             std::cout << "Please enter the file name you wish to save the Hilbert's Curve to: "; std::cin >> fileName;
             fileNameDirectory += fileName;
             initiateCurve(fileNameDirectory);
