@@ -94,7 +94,6 @@ int main(){
         if (mainMenuChoice == 1){
             std::string fileNameDirectory = "../";
             std::string fileName; // initialize necessary params for future function/class call from Hilbert files.
-            displaySubMenu(mainMenuChoice);
             std::cout << "Please enter the file name you wish to save the Hilbert's Curve to: "; std::cin >> fileName;
             fileNameDirectory += fileName;
             initiateCurve(fileNameDirectory);
