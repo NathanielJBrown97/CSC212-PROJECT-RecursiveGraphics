@@ -4,7 +4,7 @@
 
 int count = 1;
 /////// MAIN FUNCTION TURNIED INTO INITIATE CURVE
-int main() {
+int initiateCurve(std::string fileName) {
     const int windowWidth = 1000;
     const int windowHeight = 1000;
     // 7 is the max you can achieve before the graphics become too small to see
@@ -17,6 +17,12 @@ int main() {
 
     HilbertCurve hilbert(order, startPosition, sideLength);
 
+    /// CREATION OF TEXTURE / IMAGE OBJECTS *** MUST *** OCCUR BEFORE OPENING WINDOW.
+    ///Create a TEXTURE template-class object; for use in storing the graphic. Will be copied into the image object.
+    sf::Texture requiredSolution;
+    ///Create a IMAGE template-class object; for use in saving the texture as a PNG.
+    sf::Image requiredAggravation;
+
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -27,6 +33,15 @@ int main() {
         window.clear(sf::Color::Black);
 
         hilbert.draw(window);
+
+
+        /// Start Conversion and Creation of PNG image.
+        requiredSolution.create(windowWidth, windowHeight); // Create a texture of the dimensions of the graphic window
+        requiredSolution.update(window); // Update the texture to be the current set of pixels within the graphic_window
+        requiredAggravation = requiredSolution.copyToImage(); // Set the Image object; to be a copy of the texture, using the built in function.
+        requiredAggravation.saveToFile(fileName); //Save the updated image to a file; using the filename parameter.
+        /// End Creation of Image.
+
 
         window.display();
     }
