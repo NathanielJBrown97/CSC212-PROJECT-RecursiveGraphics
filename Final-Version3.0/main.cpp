@@ -27,7 +27,8 @@ void displayMainMenu(bool firstDisplay){
 void displaySubMenu(int mainMenuChoice){
     //// HILBERT'S CURVE - The messages and parameters are templates. Adjust to what is needed in future additions.
     if (mainMenuChoice == 1){
-        std::cout << "Welcome to the Hilbert's Curve Algorithm \n\n";
+        std::cout << "Welcome to the Hilbert's Curve Algorithm \n" <<
+        "Please follow the prompts and enter a file name for your image creation. *Must* end with .png. \n\n";
     }
         //// SIERPINSKI'S TRIANGLE
     else if (mainMenuChoice == 2){
