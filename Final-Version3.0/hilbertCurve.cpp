@@ -64,7 +64,6 @@ void HilbertCurve::generateCurve(int order, sf::Vector2f start, float sideLength
     // Base case: If the current order is zero or less, add the starting point to the points vector and return.
     if (order <= 0) {
         points.push_back(start);
-        std::cout << start.x << " " << start.y << " " << count << std::endl;
         count++;
         return;
     }
