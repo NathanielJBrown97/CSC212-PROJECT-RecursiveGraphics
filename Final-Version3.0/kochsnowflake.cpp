@@ -29,15 +29,15 @@
 
 /// NON-CLASS function; used within main passed setter parameters to determine creation.
 // Initiates our RenderWindow creates our snowflake object, and sets the setters to respective parameters.
-// Parameters X: Height and Width to determine size of our window (1000,1000 always - for consistency).
-void initiateKOCH(int HEIGHT, int WIDTH, std::string fileName, sf::Color userColor, int stage) {
+// Parameters X: height and Width to determine size of our window (1000,1000 always - for consistency).
+void initiateKOCH(int height, int width, std::string fileName, sf::Color userColor, int stage) {
 
     //creates our object window using the template class RenderWindow. This accepts two parameters. A mode and a title.
-    // The mode is an object of type VideoMode (template class of SFML library) which requires two parameters a Width and a Height. Used to scale the window's box.
-    sf::RenderWindow graphic_window(sf::VideoMode(WIDTH, HEIGHT), "Koch's Snowflake");
+    // The mode is an object of type VideoMode (template class of SFML library) which requires two parameters a Width and a height. Used to scale the window's box.
+    sf::RenderWindow graphic_window(sf::VideoMode(width, height), "Koch's Snowflake");
 
     kochSnowflake graphic; // creates an object of our Koch Snowflake class; calls the default constructor automatically.
-    graphic.setInvisibleBox(0.0, 0.0, WIDTH, HEIGHT); // Snowflake Class setter - sets the dimensions of our invisible box in which the snowflake will be constructed; passed Width / Height from functions params.
+    graphic.setInvisibleBox(0.0, 0.0, width, height); // Snowflake Class setter - sets the dimensions of our invisible box in which the snowflake will be constructed; passed Width / height from functions params.
     graphic.setColor(userColor); // Snowflake Class setter - sets the color.
     graphic.setStageOutput(stage); // Snowflake Class setter - sets the number of iterations the recursive graphic generation will undergo (i.e. sets the stage of the final output drawing); passed int variable representing number of iterations.
 
@@ -66,7 +66,7 @@ void initiateKOCH(int HEIGHT, int WIDTH, std::string fileName, sf::Color userCol
         graphic_window.display(); // calls RenderWindow function to display the graphic.
 
         /// Start Conversion and Creation of PNG image.
-        requiredSolution.create(WIDTH, HEIGHT); // Create a texture of the dimensions of the graphic window
+        requiredSolution.create(width, height); // Create a texture of the dimensions of the graphic window
         requiredSolution.update(graphic_window); // Update the texture to be the current set of pixels within the graphic_window
         requiredAggravation = requiredSolution.copyToImage(); // Set the Image object; to be a copy of the texture, using the built in function.
         requiredAggravation.saveToFile(fileName); //Save the updated image to a file; using the filename parameter.
@@ -86,12 +86,12 @@ void kochSnowflake::construct_snowflake(sf::RenderWindow& graphic_window)
     sf::Vector2f bottomRight = sf::Vector2f(invisible_box.getSize().x, invisible_box.getSize().y); // establishes a bot right variable to the position of the size of the x and y of our invisible box.
 
     float oneThirdWidth = (bottomRight.x - topLeft.x)/6; // float for the width of a third of the width from bottom right x minus the top left x. (Divided by 6).
-    float oneThirdHeight = (bottomRight.y - topLeft.y)/6; // same as above; but with the y values.
+    float oneThirdheight = (bottomRight.y - topLeft.y)/6; // same as above; but with the y values.
 
     // calculates the coordinates of  the LEFT point in the triangle.
-    sf::Vector2f leftPoint = sf::Vector2f(topLeft.x+oneThirdWidth, bottomRight.y-2*oneThirdHeight); //2d Vector of floats; top left x value + one third of the width, and bottom right y value - 2 times the third of the height variable.
+    sf::Vector2f leftPoint = sf::Vector2f(topLeft.x+oneThirdWidth, bottomRight.y-2*oneThirdheight); //2d Vector of floats; top left x value + one third of the width, and bottom right y value - 2 times the third of the height variable.
     // calculates the coordinates of  the RIGHT point in the triangle.
-    sf::Vector2f rightPoint = sf::Vector2f(bottomRight.x-oneThirdWidth, bottomRight.y-2*oneThirdHeight);  // same as above; but the x value is decremented by the third of the width. NOT added. i.e. drops point on opposite side.
+    sf::Vector2f rightPoint = sf::Vector2f(bottomRight.x-oneThirdWidth, bottomRight.y-2*oneThirdheight);  // same as above; but the x value is decremented by the third of the width. NOT added. i.e. drops point on opposite side.
     // calculates the coordinates of  the TOP point in the triangle.
     sf::Vector2f top = find_top_vector(leftPoint, rightPoint); // calls the top point helper function passed the above left and right positions. Stores the return as a 2d vector float.
 
